@@ -1,3 +1,4 @@
+alert("kirby");
 const { ApolloServer, gql } = require('apollo-server');
 
 // This is a (sample) collection of books we'll be able to query
