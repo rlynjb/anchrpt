@@ -45,14 +45,11 @@ const resolvers = {
 // responsible for fetching the data for those types.
 const server = new ApolloServer({ 
   typeDefs, 
-  resolvers,
-  engine: {
-    port: process.env.PORT
-  } 
+  resolvers
 });
 
 // This `listen` method launches a web-server.  Existing apps
 // can utilize middleware options, which we'll discuss later.
-server.listen().then(({ url }) => {
+server.listen({ port: process.env.PORT }).then(({ url }) => {
   console.log(`🚀  Server ready at ${url}`);
 });
