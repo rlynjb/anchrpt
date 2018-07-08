@@ -1,47 +1,56 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
-const { makeExecutableSchema } = require('graphql-tools');
+const { ApolloServer, gql } = require('apollo-server');
 
-// Some fake data
-const books = [
-  {
-    title: "Harry Potter and the Sorcerer's stone",
-    author: 'J.K. Rowling',
-  },
-  {
-    title: 'Jurassic Park',
-    author: 'Michael Crichton',
-  },
-];
+// This is a (sample) collection of books we'll be able to query
+// the GraphQL server for.  A more complete example might fetch
+// from an existing data source like a REST API or database.
 
-// The GraphQL schema in string form
-const typeDefs = `
-  type Query { books: [Book] }
-  type Book { title: String, author: String }
+// Type definitions define the "shape" of your data and specify
+// which ways the data can be fetched from the GraphQL server.
+const typeDefs = gql`
+  # Comments in GraphQL are defined with the hash (#) symbol.
+
+  # This "Book" type can be used in other type declarations.
+  type Book {
+    title: String
+    author: String
+  }
+
+  # The "Query" type is the root of all GraphQL queries.
+  # (A "Mutation" type will be covered later on.)
+  type Query {
+    books: [Book]
+  }
 `;
 
-// The resolvers
+// Resolvers define the technique for fetching the types in the
+// schema.  We'll retrieve books from the "books" array above.
 const resolvers = {
-  Query: { books: () => books },
+  Query: {
+    books: () => {
+      return [
+        {
+          title: 'Harry Potter and the Chamber of Secrets',
+          author: 'J.K. Rowling',
+        },
+        {
+          title: 'Jurassic Park',
+          author: 'Michael Crichton',
+        },
+      ]
+    },
+  },
 };
 
-// Put together a schema
-const schema = makeExecutableSchema({
-  typeDefs,
-  resolvers,
+// In the most basic sense, the ApolloServer can be started
+// by passing type definitions (typeDefs) and the resolvers
+// responsible for fetching the data for those types.
+const server = new ApolloServer({ 
+  typeDefs, 
+  resolvers
 });
 
-// Initialize the app
-const app = express();
-
-// The GraphQL endpoint
-app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
-
-// GraphiQL, a visual editor for queries
-app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
-
-// Start the server
-app.listen(process.env.PORT || 3000, () => {
-  console.log('Go to http://localhost:3000/graphiql to run queries!');
+// This `listen` method launches a web-server.  Existing apps
+// can utilize middleware options, which we'll discuss later.
+server.listen({ port: process.env.PORT }).then(({ url }) => {
+  console.log(`🚀  Server ready at ${url}`);
 });
