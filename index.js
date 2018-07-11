@@ -1,23 +1,62 @@
+import fetch from 'node-fetch';
+
 const { ApolloServer, gql } = require('apollo-server');
 
 const typeDefs = gql`
-  # Comments in GraphQL are defined with the hash (#) symbol.
-
-  # This "Book" type can be used in other type declarations.
   type Book {
     title: String
     author: String
   }
+  
+  type Place {
+    id: String,
+    title: String,
+    images: [String],
+    price: Int,
+    open_hours: [OpenHours],
+    category: [String],
+    description: String,
+    location: Location,
+    website: String
+  }
+  
+  type OpenHours {
+    date: String,
+    time: [Time]
+  }
+  
+  type Time {
+    start: String,
+    end: String
+  }
+  
+  type Location {
+    address: String,
+    zipcode: String,
+    city: String,
+    state: String,
+    country: String
+  }
 
-  # The "Query" type is the root of all GraphQL queries.
-  # (A "Mutation" type will be covered later on.)
   type Query {
-    books: [Book]
+    books: [Book],
+    places: [Place]
   }
 `;
 
+/* 
+  https://developers.google.com/places/web-service/search
+*/
+let nearbySearchApi = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=36.057726,-115.237187&keyword=bar,bars&type=bar&radius=80000&maxprice=2&key=AIzaSyBd0gI0OszcB1VkKFSD0jLbqKleC98N5tY'
+
 const resolvers = {
   Query: {
+    places: () => {
+      fetch( nearbySearchApi )
+        .then( res() => {
+          console.log('kirby', res)
+        })
+    },
     books: () => {
       return [
         {
