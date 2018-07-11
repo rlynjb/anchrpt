@@ -53,7 +53,7 @@ const resolvers = {
   Query: {
     places: () => {
       fetch( nearbySearchApi )
-        .then( res() => {
+        .then( res => {
           console.log('kirby', res)
         })
     },
