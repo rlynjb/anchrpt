@@ -53,20 +53,20 @@ let nearbySearchApi = 'https://maps.googleapis.com/maps/api/place/nearbysearch/j
 const resolvers = {
   Query: {
     places: () => {
+      let finalData = []
+
       fetch( nearbySearchApi )
         .then(res => res.json())
         .then(json => {
           if (json.status != 'OK') return false
 
-          let finalData = []
-
           json.results.forEach( i => {
             console.log(i.name)
             finalData.push({ title: i.name })
           })
-          
-          return finalData
         })
+        
+      return finalData
     },
 
     books: () => {
