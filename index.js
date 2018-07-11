@@ -56,7 +56,7 @@ const resolvers = {
       fetch( nearbySearchApi )
         .then(res => res.json())
         .then(json => {
-          json.status != 'OK' && return false
+          if (json.status != 'OK') return false
           console.log(json)
         })
     },
