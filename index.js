@@ -61,12 +61,12 @@ const resolvers = {
           if (json.status != 'OK') return false
 
           json.results.forEach( i => {
-            console.log(i.name)
             finalData.push({ title: i.name })
           })
+          
+          console.log(finalData)
+          return finalData
         })
-        
-      return finalData
     },
 
     books: () => {
