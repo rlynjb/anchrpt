@@ -57,9 +57,13 @@ const resolvers = {
         .then(res => res.json())
         .then(json => {
           if (json.status != 'OK') return false
-          console.log(json)
+
+          json.results.forEach( i => {
+            console.log(i.name)
+          })
         })
     },
+
     books: () => {
       return [
         {
