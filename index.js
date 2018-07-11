@@ -63,7 +63,8 @@ const resolvers = {
           json.results.forEach( i => {
             finalData.push({ title: i.name })
           })
-          
+        })
+        .then(() => {
           console.log(finalData)
           return finalData
         })
