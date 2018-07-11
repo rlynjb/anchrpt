@@ -55,7 +55,10 @@ const resolvers = {
     places: () => {
       fetch( nearbySearchApi )
         .then(res => res.json())
-        .then(json => console.log(json))
+        .then(json => {
+          return (json.status != 'OK' && false)
+          console.log(json)
+        })
     },
     books: () => {
       return [
