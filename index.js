@@ -1,5 +1,3 @@
-//import fetch from 'node-fetch';
-const fetch = require('node-fetch');
 const { ApolloServer, gql } = require('apollo-server');
 const { resolvers } = require('./resolvers.js');
 

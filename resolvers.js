@@ -1,3 +1,6 @@
+//import fetch from 'node-fetch';
+const fetch = require('node-fetch');
+
 /* 
   https://developers.google.com/places/web-service/search
 */
