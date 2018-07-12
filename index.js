@@ -61,14 +61,11 @@ const resolvers = {
 
       let finalData = []
 
-      /*json.results.forEach( i => {
+      json.results.forEach( i => {
         finalData.push({
-          title: i.name,
-          price: i.price,
-          category: i.types,
-          location: i.vicinity
+          title: i.name
         })
-      })*/
+      })
       
       return finalData
     },
