@@ -1,13 +1,13 @@
 //import fetch from 'node-fetch';
 const fetch = require('node-fetch');
-const typeDefs = require('./schema.js');
-const resolvers = require('./resolvers.js');
+const s = require('./schema.js');
+const r = require('./resolvers.js');
 
 const { ApolloServer, gql } = require('apollo-server');
 
 const server = new ApolloServer({ 
-  typeDefs, 
-  resolvers
+  s.typeDefs, 
+  r.resolvers
 });
 
 server.listen({ port: process.env.PORT }).then(({ url }) => {
