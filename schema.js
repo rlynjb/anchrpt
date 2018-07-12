@@ -1,4 +1,4 @@
-exports.typeDefs = gql`
+const typeDefs = gql`
   type Book {
     title: String
     author: String
@@ -39,3 +39,5 @@ exports.typeDefs = gql`
     places: [Place]
   }
 `;
+
+module.exports.typeDefs = typeDefs;
