@@ -1,7 +1,5 @@
 //import fetch from 'node-fetch';
 const fetch = require('node-fetch');
-const s = require('./schema.js');
-const r = require('./resolvers.js');
 const { ApolloServer, gql } = require('apollo-server');
 
 const typeDefs = gql`
@@ -56,19 +54,19 @@ let photoApi = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&ph
 const resolvers = {
   Query: {
     places: async () => {
-      const res = await fetch(nearbySearchApi)
-      const json = await res.json()
-      if (json.status != 'OK') return false
+      //const res = await fetch(nearbySearchApi)
+      //const json = await res.json()
+      //if (json.status != 'OK') return false
       let finalData = []
 
-      json.results.forEach( i => {
+      /*json.results.forEach( i => {
         finalData.push({
           title: i.name,
           price: i.price,
           category: i.types,
           location: i.vicinity
         })
-      })
+      })*/
       
       return finalData
     },
@@ -84,7 +82,7 @@ const resolvers = {
           author: 'Michael Crichton',
         },
       ]
-    }
+    },
   },
 };
 
