@@ -1,4 +1,4 @@
-module.exports = gql`
+exports.typeDefs = gql`
   type Book {
     title: String
     author: String
