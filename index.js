@@ -56,8 +56,9 @@ const resolvers = {
     places: async () => {
       const res = await fetch(nearbySearchApi)
       const json = await res.json()
+      if (json.status != 'OK') return false
       console.log(json)
-      //if (json.status != 'OK') return false
+
       let finalData = []
 
       /*json.results.forEach( i => {
