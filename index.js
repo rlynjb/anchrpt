@@ -54,7 +54,8 @@ let photoApi = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&ph
 const resolvers = {
   Query: {
     places: async () => {
-      //const res = await fetch(nearbySearchApi)
+      const res = await fetch(nearbySearchApi)
+      console.log(res)
       //const json = await res.json()
       //if (json.status != 'OK') return false
       let finalData = []
