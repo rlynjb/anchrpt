@@ -1,8 +1,8 @@
-const { ApolloServer, gql } = require('apollo-server');
-//const { typeDefs } = require('./schema.js');
+const { ApolloServer } = require('apollo-server');
+const { typeDefs } = require('./schema.js');
 const { resolvers } = require('./resolvers.js');
 
-const typeDefs = gql`
+/*const typeDefs = gql`
   type Book {
     title: String
     author: String
@@ -42,7 +42,7 @@ const typeDefs = gql`
     books: [Book],
     places: [Place]
   }
-`;
+`;*/
 
 const server = new ApolloServer({ 
   typeDefs, 
