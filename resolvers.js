@@ -13,7 +13,7 @@ const api = {
     const json = await res.json()
     if (json.status != 'OK') return false
     
-    return json.results
+    return json
   }
 }
 
@@ -21,10 +21,10 @@ const resolvers = {
   Query: {
     places: () => {
       const val = api.get(nearbySearchApi)
-      console.log(val)
+
       let finalData = []
 
-      val.forEach( i => {
+      val.results.forEach( i => {
         finalData.push({
           title: i.name,
           price: i.price,
