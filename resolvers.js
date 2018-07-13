@@ -13,7 +13,7 @@ let api = {
     const json = await res.json()
     if (json.status != 'OK') return false
     
-    return json
+    return json.results
   }
 }
 
@@ -24,7 +24,7 @@ const resolvers = {
 
       let finalData = []
 
-      val.results.forEach( i => {
+      val.forEach( i => {
         finalData.push({
           title: i.name,
           price: i.price,
