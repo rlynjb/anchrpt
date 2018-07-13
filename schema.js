@@ -32,7 +32,6 @@ const typeDefs = gql`
   }
 
   type Query {
-    books: [Book],
     places: [Place]
   }
 `;
