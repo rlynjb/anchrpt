@@ -21,7 +21,7 @@ const resolvers = {
   Query: {
     places: () => {
       const val = api.get(nearbySearchApi)
-
+      console.log(val)
       let finalData = []
 
       val.forEach( i => {
