@@ -19,7 +19,7 @@ let api = {
 
 const resolvers = {
   Place: {
-    open_hours: () => {
+    open_hours: async () => {
       return await api.get(nearbySearchApi).opening_hours
     }
   },
