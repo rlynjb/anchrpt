@@ -1,4 +1,3 @@
-//import fetch from 'node-fetch';
 const fetch = require('node-fetch');
 
 /* 
@@ -27,19 +26,6 @@ const resolvers = {
       
       return finalData
     },
-
-    books: () => {
-      return [
-        {
-          title: 'Harry Potter and the Chamber of Secrets',
-          author: 'J.K. Rowling',
-        },
-        {
-          title: 'Jurassic Park',
-          author: 'Michael Crichton',
-        },
-      ]
-    }
   },
 };
 
