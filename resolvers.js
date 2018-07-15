@@ -5,7 +5,7 @@ const fetch = require('node-fetch');
 */
 let nearbySearchApi = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=36.057726,-115.237187&keyword=bar,bars&type=bar&radius=80000&maxprice=2&key=AIzaSyBd0gI0OszcB1VkKFSD0jLbqKleC98N5tY'
 
-let photoApi = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=CnRtAAAATLZNl354RwP_9UKbQ_5Psy40texXePv4oAlgP4qNEkdIrkyse7rPXYGd9D_Uj1rVsQdWT4oRz4QrYAJNpFX7rzqqMlZw2h2E2y5IKMUZ7ouD_SlcHxYq1yL4KbKUv3qtWgTK0A6QbGh87GB3sscrHRIQiG2RrmU_jF4tENr9wGS_YxoUSSDrYjWmrNfeEHSGSc3FyhNLlBU&key=AIzaSyBd0gI0OszcB1VkKFSD0jLbqKleC98N5tY'
+let photoApi = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&key=AIzaSyBd0gI0OszcB1VkKFSD0jLbqKleC98N5tY&photoreference='
 
 let api = {
   get: async (v) => {
@@ -20,7 +20,16 @@ let api = {
 const resolvers = {
   Place: {
     title: (place) => place.name,
-    price: (place) => place.price_level
+    price: (place) => place.price_level,
+    category: (place) => place.types,
+    location: (place) => place.vicinity,
+    images: async (place) => {
+      let v = []
+      place.photos.forEach((i) => {
+        v.push(await api.get(photoApi + i.photo_reference))
+      })
+      return v
+    }
   },
 
   Query: {
