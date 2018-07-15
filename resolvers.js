@@ -19,29 +19,12 @@ let api = {
 
 const resolvers = {
   Place: {
-    title: (place) => {
-      return place.name
-    }
+    title: (place) => place.name,
+    price: (place) => place.price_level
   },
 
   Query: {
-    places: async () => {
-      const val = await api.get(nearbySearchApi)
-      return val
-
-      /*let finalData = []
-
-      val.forEach( i => {
-        finalData.push({
-          title: i.name,
-          price: i.price_level,
-          category: i.types,
-          location: i.vicinity
-        })
-      })
-      
-      return finalData*/
-    },
+    places: async () => await api.get(nearbySearchApi)
   },
 };
 
