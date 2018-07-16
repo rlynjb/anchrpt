@@ -19,10 +19,10 @@ let api = {
 
 const resolvers = {
   Place: {
+    id: (place) => place.place_id,
     title: (place) => place.name,
     price: (place) => place.price_level,
     category: (place) => place.types,
-    location: (place) => place.vicinity,
     images: async (place) => {
       let v =[]
       for (let i = 0; i < place.photos.length; i++) {
