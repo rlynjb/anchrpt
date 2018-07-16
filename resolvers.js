@@ -23,13 +23,12 @@ const resolvers = {
     price: (place) => place.price_level,
     category: (place) => place.types,
     location: (place) => place.vicinity,
-    images: async (place) => {
-      let v = []
-      place.photos.forEach((i) => {
-        v.push( i.photo_reference )
-        //let b = await api.get(photoApi + i.photo_reference)
-        //v.push( b )
-      })
+    images: (place) => {
+      let v =[]
+      for (let i = 0; i < place.photos.length; i++) {
+        let b = await api.get(photoApi + place.photos[i].photo_reference)
+        v.push( b )
+      }
       return v
     }
   },
