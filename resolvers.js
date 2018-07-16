@@ -27,7 +27,8 @@ const resolvers = {
       let v =[]
       for (let i = 0; i < place.photos.length; i++) {
         const b = await fetch(photoApi + place.photos[i].photo_reference)
-        v.push( b.json() )
+        const res = await b.json()
+        v.push(res)
       }
       return v
     }
