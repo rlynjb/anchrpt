@@ -27,7 +27,8 @@ const resolvers = {
       let v =[]
       for (let i = 0; i < place.photos.length; i++) {
         const b = await fetch(photoApi + place.photos[i].photo_reference)
-        console.log(b)
+        const vc = await b.body
+        console.log(vc)
         v.push(b)
       }
       return v
@@ -37,6 +38,6 @@ const resolvers = {
   Query: {
     places: async () => await api.get(nearbySearchApi)
   },
-};
+}
 
 module.exports.resolvers = resolvers;
