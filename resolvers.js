@@ -54,14 +54,12 @@ const resolvers = {
       return b.url
     },
     website: async (place) => {
-      let b = await fetch(placeDetail + place.place_id + '&fields=website')
-      let bv = await b.json()
-      return bv.result.website
+      let b = await api.get(placeDetail + place.place_id + '&fields=website')
+      return b.website
     },
     phone: async (place) => {
-      let b = await fetch(placeDetail + place.place_id + '&fields=formatted_phone_number')
-      let bv = await b.json()
-      return bv.result.formatted_phone_number
+      let b = await api.get(placeDetail + place.place_id + '&fields=formatted_phone_number')
+      return b.formatted_phone_number
     }
   },
 
