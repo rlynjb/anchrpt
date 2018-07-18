@@ -35,7 +35,7 @@ const resolvers = {
     },
     price: (place) => place.price_level,
     rating: (place) => place.rating,
-    open_now: (place) => place.opening_hours.open_hours,
+    open_now: (place) => place.opening_hours.open_now,
     open_hours: (place) => {
       // include open now and hours
       // need to analyze data response to match schema
