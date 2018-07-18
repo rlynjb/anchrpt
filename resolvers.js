@@ -50,7 +50,8 @@ const resolvers = {
     },
     map_url: async (place) => {
       let b = await fetch(placeDetail + place.place_id + '&fields=url')
-      return b.result.url
+      let bv = await b.json()
+      return bv.result.url
     },
     website: async (place) => {
       let b = await fetch(placeDetail + place.place_id + '&fields=website')
