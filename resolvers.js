@@ -27,7 +27,7 @@ const resolvers = {
       let v =[]
       for (let i = 0; i < place.photos.length; i++) {
         const b = await fetch(photoApi + place.photos[i].photo_reference)
-        const vc = await b.type
+        const vc = await b.headers.get('Content-Type')
         console.log(vc)
         v.push(vc)
       }
