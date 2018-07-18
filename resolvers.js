@@ -32,7 +32,7 @@ const resolvers = {
 
         let imgdata = "data:" + vc + ";base64," + new Buffer(bodyimg).toString('base64')
         console.log(imgdata)
-        v.push(imgdata)
+        v.push([vc, bodyimg])
       }
       return v
     }
