@@ -28,9 +28,12 @@ const resolvers = {
     title: (place) => place.name,
     images: async (place) => {
       let v = []
-      for (let i = 0; i < place.photos.length; i++) {
-        let b = await fetch(photoApi + place.photos[i].photo_reference)
-        v.push(b.url)
+      
+      let b = await api.get(placeDetail + place.place_id + '&fields=photos')
+
+      for (let i = 0; i < b.photos.length; i++) {
+        let bv = await fetch(photoApi + place.photos[i].photo_reference)
+        v.push(bv.url)
       }
       return v
     },
@@ -67,5 +70,10 @@ const resolvers = {
     places: async () => await api.get(nearbySearchApi)
   },
 }
+
+/*
+  - implement Mutation to display other types/categories
+  - implment next page token, previous token, lazy loading
+*/
 
 module.exports.resolvers = resolvers;
