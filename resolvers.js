@@ -28,11 +28,11 @@ const resolvers = {
       for (let i = 0; i < place.photos.length; i++) {
         let b = await fetch(photoApi + place.photos[i].photo_reference)
         let vc = await b.headers.get('Content-Type')
-        let bodyimg = await b.json()
+        //let bodyimg = await b.json()
 
         //let imgdata = "data:" + vc + ";base64," + new Buffer(bodyimg).toString('base64')
         
-        console.log(vc, bodyimg)
+        console.log(vc, b)
         v.push(vc)
       }
 
