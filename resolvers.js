@@ -29,7 +29,7 @@ const resolvers = {
         const b = await fetch(photoApi + place.photos[i].photo_reference)
         const vc = await b.body
         console.log(vc)
-        v.push(b)
+        v.push(vc)
       }
       return v
     }
