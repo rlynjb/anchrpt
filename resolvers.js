@@ -31,6 +31,7 @@ const resolvers = {
         let bodyimg = await b.body
 
         let imgdata = "data:" + vc + ";base64," + new Buffer(bodyimg).toString('base64')
+
         console.log(imgdata)
         v.push([vc, bodyimg])
       }
