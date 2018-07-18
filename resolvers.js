@@ -27,15 +27,9 @@ const resolvers = {
       let v =[]
       for (let i = 0; i < place.photos.length; i++) {
         let b = await fetch(photoApi + place.photos[i].photo_reference)
-        let vc = await b.headers.get('Content-Type')
-        //let bodyimg = await b.json()
-
-        //let imgdata = "data:" + vc + ";base64," + new Buffer(bodyimg).toString('base64')
-        
-      console.log(vc, b.url)
+        //let vc = await b.headers.get('Content-Type')
         v.push(b.url)
       }
-
       return v
     }
   },
