@@ -55,11 +55,13 @@ const resolvers = {
     },
     website: async (place) => {
       let b = await fetch(placeDetail + place.place_id + '&fields=website')
-      return b.result.website
+      let bv = await b.json()
+      return bv.result.website
     },
     phone: async (place) => {
       let b = await fetch(placeDetail + place.place_id + '&fields=formatted_phone_number')
-      return b.result.formatted_phone_number
+      let bv = await b.json()
+      return bv.result.formatted_phone_number
     }
   },
 
