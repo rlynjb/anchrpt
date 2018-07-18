@@ -17,7 +17,8 @@ let api = {
     const json = await res.json()
     if (json.status != 'OK') return false
     
-    return json.results
+    if (json.results) return json.results
+    if (json.result) return json.result
   }
 }
 
@@ -26,7 +27,7 @@ const resolvers = {
     id: (place) => place.place_id,
     title: (place) => place.name,
     images: async (place) => {
-      let v =[]
+      let v = []
       for (let i = 0; i < place.photos.length; i++) {
         let b = await fetch(photoApi + place.photos[i].photo_reference)
         v.push(b.url)
@@ -46,12 +47,11 @@ const resolvers = {
       // need to rethink about this
     },
     location: (place) => {
-      //
+      // need to analyze data and match
     },
     map_url: async (place) => {
-      let b = await fetch(placeDetail + place.place_id + '&fields=url')
-      let bv = await b.json()
-      return bv.result.url
+      let b = await api.get(placeDetail + place.place_id + '&fields=url')
+      return b.url
     },
     website: async (place) => {
       let b = await fetch(placeDetail + place.place_id + '&fields=website')
