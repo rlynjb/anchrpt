@@ -48,15 +48,15 @@ const resolvers = {
     location: (place) => {
       //
     },
-    map_url: (place) => {
+    map_url: async (place) => {
       let b = await fetch(placeDetail + place.place_id + '&fields=url')
       return b.result.url
     },
-    website: (place) => {
+    website: async (place) => {
       let b = await fetch(placeDetail + place.place_id + '&fields=website')
       return b.result.website
     },
-    phone: (place) => {
+    phone: async (place) => {
       let b = await fetch(placeDetail + place.place_id + '&fields=formatted_phone_number')
       return b.result.formatted_phone_number
     }
