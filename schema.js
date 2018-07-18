@@ -6,11 +6,15 @@ const typeDefs = gql`
     title: String,
     images: [String],
     price: Int,
+    rating: Float,
+    open_now: Boolean,
     open_hours: [OpenHours],
     category: [String],
     description: String,
     location: Location,
-    website: String
+    map_url: String,
+    website: String,
+    phone: String
   }
   
   type OpenHours {
