@@ -26,7 +26,8 @@ const resolvers = {
     images: async (place) => {
       let v =[]
       for (let i = 0; i < place.photos.length; i++) {
-        const b = await fetch(photoApi + place.photos[i].photo_reference).url
+        const b = await fetch(photoApi + place.photos[i].photo_reference)
+        const 
         v.push(b)
       }
       console.log(v)
