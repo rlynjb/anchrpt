@@ -31,9 +31,9 @@ const resolvers = {
       
       //let b = await api.get(placeDetail + place.place_id + '&fields=photos')
 
-      for (let i = 0; i < 2; i++) {
-        let bv = await fetch(photoApi + place.photos[i].photo_reference)
-        v.push(bv.url)
+      for (let i = 0; i < place.photos.length; i++) {
+        let b = await fetch(photoApi + place.photos[i].photo_reference)
+        v.push(b.url)
       }
       return v
     },
