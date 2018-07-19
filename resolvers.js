@@ -31,11 +31,15 @@ const resolvers = {
       
       let b = await api.get(placeDetail + place.place_id + '&fields=photos')
 
-      for (let i = 0; i < 2; i++) {
+      /*for (let i = 0; i < 2; i++) {
         let bv = await fetch(photoApi + place.photos[i].photo_reference)
         v.push(bv.url)
-      }
-      return v
+      }*/
+      
+      return b.photos.map((item, index, arr) => {
+        return await fetch(photoApi + item.photo_reference).url
+      })
+      //return v
     },
     price: (place) => place.price_level,
     rating: (place) => place.rating,
