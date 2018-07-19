@@ -80,7 +80,9 @@ const resolvers = {
 
       location.map((i,v,k) => {
         i.types.filter(iv => {
-          fields.forEach(fv => if (iv.includes(fv)) cleanAddress.push(i.short_name))
+          fields.forEach(fv => {
+            if (iv.includes(fv)) cleanAddress.push(i.short_name)
+          })
         })
       })
       
