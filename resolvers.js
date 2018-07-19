@@ -76,7 +76,7 @@ const resolvers = {
             console.log(i.short_name)
             return i.short_name
           }
-        }
+        })
       })
     }
   },
