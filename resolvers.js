@@ -82,15 +82,15 @@ const resolvers = {
       return cleanAddress.join(" ")
     },
     zipcode: (location) => {
-      let cleanAddress = ""
+      let cleanAddress = []
 
       location.map((i,v,k) => {
         i.types.filter(iv => {
-          cleanAddress = if (iv.includes("postal_code")) i.short_name
+          if (iv.includes("postal_code")) cleanAddress.push(i.short_name)
         })
       })
       
-      return cleanAddress
+      return cleanAddress.join("")
     },
     city: (location) => {
     
