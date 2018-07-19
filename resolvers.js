@@ -70,14 +70,17 @@ const resolvers = {
 
   Location: {
     address: (location) => {
+      let cleanAddress = []
+
       location.map((i,v,k) => {
         i.types.filter(iv => {
-          if (iv.includes("street_number")) {
-            console.log(i.short_name)
-            return i.short_name
-          }
+          if (iv.includes("street_number")) cleanAddress.push(i.short_name)
+          if (iv.includes("route")) cleanAddress.push(i.short_name)
+          if (iv.includes("locality")) cleanAddress.push(i.short_name)
         })
       })
+      
+      return cleanAddress.join(" ")
     }
   },
 
