@@ -37,8 +37,7 @@ const resolvers = {
       }*/
       
       let v = b.photos.map((item, index, arr) => {
-        let bv = await fetch(photoApi + item.photo_reference)
-        return bv.url
+        return item.photo_reference
       })
       return v
     },
