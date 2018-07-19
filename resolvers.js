@@ -50,7 +50,6 @@ const resolvers = {
       // need to rethink about this
     },
     location: async (place) => {
-      // need to analyze data and match
       let b = await api.get(placeDetail + place.place_id + '&fields=address_components')
       return b.address_components
     },
@@ -81,6 +80,26 @@ const resolvers = {
       })
       
       return cleanAddress.join(" ")
+    },
+    zipcode: (location) => {
+      let cleanAddress = ""
+
+      location.map((i,v,k) => {
+        i.types.filter(iv => {
+          cleanAddress = if (iv.includes("postal_code")) i.short_name
+        })
+      })
+      
+      return cleanAddress
+    },
+    city: (location) => {
+    
+    },
+    state: (location) => {
+    
+    },
+    country: (location) => {
+    
     }
   },
 
