@@ -70,14 +70,14 @@ const resolvers = {
 
   Location: {
     address: (location) => {
-      console.log(location)
-      return "kirby"
-      //return location.short_name
-      /*return location.types.filter(str => {
-        if (str.includes("street_number")) {
-          return location.short_name
+      location.map((i,v,k) => {
+        i.types.filter(iv => {
+          if (iv.includes("street_number")) {
+            console.log(i.short_name)
+            return i.short_name
+          }
         }
-      })*/
+      })
     }
   },
 
