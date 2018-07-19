@@ -70,7 +70,7 @@ const resolvers = {
 
   Location: {
     address: (location) => {
-      return location
+      return location.short_name
       /*return location.types.filter(str => {
         if (str.includes("street_number")) {
           return location.short_name
