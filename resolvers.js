@@ -49,8 +49,10 @@ const resolvers = {
       // desc or reviews
       // need to rethink about this
     },
-    location: (place) => {
+    location: async (place) => {
       // need to analyze data and match
+      let b = await api.get(placeDetail + place.place_id + '&fields=address_components')
+      return b.address_components
     },
     map_url: async (place) => {
       let b = await api.get(placeDetail + place.place_id + '&fields=url')
@@ -63,6 +65,16 @@ const resolvers = {
     phone: async (place) => {
       let b = await api.get(placeDetail + place.place_id + '&fields=formatted_phone_number')
       return b.formatted_phone_number
+    }
+  },
+
+  Location: {
+    address: (location) => {
+      return location.types.filter(str => {
+        if (str.includes("street_number")) {
+          return location.short_name
+        }
+      })
     }
   },
 
