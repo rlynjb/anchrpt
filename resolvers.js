@@ -22,6 +22,12 @@ let api = {
   }
 }
 
+let helpers = {
+  mapLocationFields: (arrItems, arrFields) => {
+  
+  }
+}
+
 const resolvers = {
   Place: {
     id: (place) => place.place_id,
@@ -70,12 +76,16 @@ const resolvers = {
   Location: {
     address: (location) => {
       let cleanAddress = []
+      let fields = ["street_number", "route", "locality"]
 
       location.map((i,v,k) => {
         i.types.filter(iv => {
-          if (iv.includes("street_number")) cleanAddress.push(i.short_name)
+          fields.forEach(fv => {
+            if (iv.includes(fv)) cleanAddress.push(i.short_name)
+          })
+          /*if (iv.includes("street_number")) cleanAddress.push(i.short_name)
           if (iv.includes("route")) cleanAddress.push(i.short_name)
-          if (iv.includes("locality")) cleanAddress.push(i.short_name)
+          if (iv.includes("locality")) cleanAddress.push(i.short_name)*/
         })
       })
       
