@@ -29,10 +29,10 @@ const resolvers = {
     images: async (place) => {
       let v = []
       
-      let moreImgs = await api.get(placeDetail + place.place_id + '&fields=photos')
+      //let moreImgs = await api.get(placeDetail + place.place_id + '&fields=photos')
 
       for (let i = 0; i < 2; i++) {
-        let b = await fetch(photoApi + moreImgs.photos[i].photo_reference)
+        let b = await fetch(photoApi + place.photos[i].photo_reference)
         v.push(b.url)
       }
       return v
