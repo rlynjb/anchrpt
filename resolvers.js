@@ -90,16 +90,40 @@ const resolvers = {
         })
       })
       
-      return cleanAddress.join("")
+      return cleanAddress.join(" ")
     },
     city: (location) => {
-    
+      let cleanAddress = []
+
+      location.map((i,v,k) => {
+        i.types.filter(iv => {
+          if (iv.includes("administrative_area_level_2")) cleanAddress.push(i.short_name)
+        })
+      })
+      
+      return cleanAddress.join(" ")
     },
     state: (location) => {
-    
+      let cleanAddress = []
+
+      location.map((i,v,k) => {
+        i.types.filter(iv => {
+          if (iv.includes("administrative_area_level_1")) cleanAddress.push(i.short_name)
+        })
+      })
+      
+      return cleanAddress.join(" ")
     },
     country: (location) => {
-    
+      let cleanAddress = []
+
+      location.map((i,v,k) => {
+        i.types.filter(iv => {
+          if (iv.includes("country")) cleanAddress.push(i.short_name)
+        })
+      })
+      
+      return cleanAddress.join(" ")
     }
   },
 
