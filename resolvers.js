@@ -70,7 +70,7 @@ const resolvers = {
 
   Location: {
     address: (location) => {
-      console.log("hello")
+      console.log(location)
       return "kirby"
       //return location.short_name
       /*return location.types.filter(str => {
