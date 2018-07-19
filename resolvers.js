@@ -52,7 +52,10 @@ const resolvers = {
     location: (place) => {
       // need to analyze data and match
     },
-    map_url: async (place) => await api.get(placeDetail + place.place_id + '&fields=url').url,
+    map_url: async (place) => {
+      let b = await api.get(placeDetail + place.place_id + '&fields=url')
+      return b.url
+    },
     website: async (place) => {
       let b = await api.get(placeDetail + place.place_id + '&fields=website')
       return b.website
