@@ -85,52 +85,19 @@ const resolvers = {
 
   Location: {
     address: (location) => {
-      let fields = ["street_number", "route", "locality"]
-      return helper.mapLocationFields(location, fields)
+      return helper.mapLocationFields(location, ["street_number", "route", "locality"])
     },
     zipcode: (location) => {
-      let cleanAddress = []
-
-      location.map((i,v,k) => {
-        i.types.filter(iv => {
-          if (iv.includes("postal_code")) cleanAddress.push(i.short_name)
-        })
-      })
-      
-      return cleanAddress.join(" ")
+      return helper.mapLocationFields(location, ["postal_code"])
     },
     city: (location) => {
-      let cleanAddress = []
-
-      location.map((i,v,k) => {
-        i.types.filter(iv => {
-          if (iv.includes("administrative_area_level_2")) cleanAddress.push(i.short_name)
-        })
-      })
-      
-      return cleanAddress.join(" ")
+      return helper.mapLocationFields(location, ["administrative_area_level_2"])
     },
     state: (location) => {
-      let cleanAddress = []
-
-      location.map((i,v,k) => {
-        i.types.filter(iv => {
-          if (iv.includes("administrative_area_level_1")) cleanAddress.push(i.short_name)
-        })
-      })
-      
-      return cleanAddress.join(" ")
+      return helper.mapLocationFields(location, ["administrative_area_level_1"])
     },
     country: (location) => {
-      let cleanAddress = []
-
-      location.map((i,v,k) => {
-        i.types.filter(iv => {
-          if (iv.includes("country")) cleanAddress.push(i.short_name)
-        })
-      })
-      
-      return cleanAddress.join(" ")
+      return helper.mapLocationFields(location, ["country"])
     }
   },
 
