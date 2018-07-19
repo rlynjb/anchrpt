@@ -27,7 +27,7 @@ const resolvers = {
     id: (place) => place.place_id,
     title: (place) => place.name,
     images: async (place) => {
-      let v = []
+      //let v = []
       
       let b = await api.get(placeDetail + place.place_id + '&fields=photos')
 
@@ -36,11 +36,11 @@ const resolvers = {
         v.push(bv.url)
       }*/
       
-      return b.photos.map((item, index, arr) => {
+      let v = b.photos.map((item, index, arr) => {
         let bv = await fetch(photoApi + item.photo_reference)
         return bv.url
       })
-      //return v
+      return v
     },
     price: (place) => place.price_level,
     rating: (place) => place.rating,
