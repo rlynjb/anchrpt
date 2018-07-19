@@ -27,18 +27,14 @@ const resolvers = {
     id: (place) => place.place_id,
     title: (place) => place.name,
     images: async (place) => {
-      //let v = []
+      let v = []
       
       let b = await api.get(placeDetail + place.place_id + '&fields=photos')
 
-      /*for (let i = 0; i < 2; i++) {
-        let bv = await fetch(photoApi + place.photos[i].photo_reference)
+      for (let i = 0; i < 2; i++) {
+        let bv = await fetch(photoApi + b.photos[i].photo_reference)
         v.push(bv.url)
-      }*/
-      
-      let v = b.photos.map((item, index, arr) => {
-        return item.photo_reference
-      })
+      }
       return v
     },
     price: (place) => place.price_level,
