@@ -22,9 +22,19 @@ let api = {
   }
 }
 
-let helpers = {
+let helper = {
   mapLocationFields: (arrItems, arrFields) => {
-  
+    let cleanAddress = []
+
+    arrItems.map((i,v,k) => {
+      i.types.filter(iv => {
+        arrFields.forEach(fv => {
+          if (iv.includes(fv)) cleanAddress.push(i.short_name)
+        })
+      })
+    })
+    
+    return cleanAddress.join(" ")
   }
 }
 
@@ -75,18 +85,8 @@ const resolvers = {
 
   Location: {
     address: (location) => {
-      let cleanAddress = []
       let fields = ["street_number", "route", "locality"]
-
-      location.map((i,v,k) => {
-        i.types.filter(iv => {
-          fields.forEach(fv => {
-            if (iv.includes(fv)) cleanAddress.push(i.short_name)
-          })
-        })
-      })
-      
-      return cleanAddress.join(" ")
+      return helper.mapLocationFields(location, fields)
     },
     zipcode: (location) => {
       let cleanAddress = []
