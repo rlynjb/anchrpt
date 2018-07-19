@@ -31,7 +31,7 @@ const resolvers = {
       
       //let moreImgs = await api.get(placeDetail + place.place_id + '&fields=photos')
 
-      for (let i = 0; i < 2; i++) {
+      for (let i = 0; i < place.photos.length; i++) {
         let b = await fetch(photoApi + place.photos[i].photo_reference)
         v.push(b.url)
       }
