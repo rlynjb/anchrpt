@@ -30,8 +30,10 @@ const resolvers = {
       let v = []
       
       let b = await api.get(placeDetail + place.place_id + '&fields=photos')
+      
+      console.log(b)
 
-      await for (let i = 0; i < b.photos.length; i++) {
+      for (let i = 0; i < b.photos.length; i++) {
         let bv = await fetch(photoApi + place.photos[i].photo_reference)
         v.push(bv.url)
       }
