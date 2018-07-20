@@ -85,7 +85,7 @@ const resolvers = {
 
   OpenHours: {
     date: (date) => {
-      if (date.open.day === 1 && date.close.day === 1) {
+      if (date.open.day == 1 && date.close.day == 1) {
         return "Monday"
       }
     },
