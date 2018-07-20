@@ -85,7 +85,9 @@ const resolvers = {
 
   OpenHours: {
     date: (date) => {
-      console.log(date.open)
+      console.log(date.open.day)
+      return date.open.day
+
       let finalVal = ""
 
       date.filter(i => {
