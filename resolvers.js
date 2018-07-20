@@ -58,7 +58,6 @@ const resolvers = {
     open_now: (place) => place.opening_hours.open_now,
     open_hours: async (place) => {
       let b = await api.get(placeDetail + place.place_id + '&fields=opening_hours')
-      console.log(b.opening_hours.periods)
       return b.opening_hours.periods
     },
     category: (place) => place.types,
@@ -86,13 +85,11 @@ const resolvers = {
 
   OpenHours: {
     date: (date) => {
-      console.log(date)
-      return "kirby"
-      /*date.filter(i => {
+      date.filter(i => {
         if (i.open.day === 1 && i.close.day === 1) {
           return "Monday"
         }
-      })*/
+      })
     },
     time: (date) => {
       //
