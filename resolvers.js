@@ -85,11 +85,13 @@ const resolvers = {
 
   OpenHours: {
     date: (date) => {
-      date.filter(i => {
+      console.log(date)
+      return "kirby"
+      /*date.filter(i => {
         if (i.open.day === 1 && i.close.day === 1) {
           return "Monday"
         }
-      })
+      })*/
     },
     time: (date) => {
       //
