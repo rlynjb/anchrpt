@@ -57,8 +57,8 @@ const resolvers = {
     rating: (place) => place.rating,
     open_now: (place) => place.opening_hours.open_now,
     open_hours: (place) => {
-      // include open now and hours
-      // need to analyze data response to match schema
+      let b = await api.get(placeDetail + place.place_id + '&fields=opening_hours')
+      return b.opening_hours
     },
     category: (place) => place.types,
     description: (place) => {
@@ -80,6 +80,28 @@ const resolvers = {
     phone: async (place) => {
       let b = await api.get(placeDetail + place.place_id + '&fields=formatted_phone_number')
       return b.formatted_phone_number
+    }
+  },
+
+  OpenHours: {
+    date: (date) => {
+      date.filter(i => {
+        if (i.open.day === 1 && i.close.day === 1) {
+          return "Monday"
+        }
+      })
+    },
+    time: (date) => {
+      //
+    }
+  },
+
+  Time: {
+    start: (time) => {
+      //
+    },
+    end: (time) => {
+      //
     }
   },
 
