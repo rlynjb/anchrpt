@@ -58,8 +58,8 @@ const resolvers = {
     open_now: (place) => place.opening_hours.open_now,
     open_hours: async (place) => {
       let b = await api.get(placeDetail + place.place_id + '&fields=opening_hours')
-      console.log(b)
-      return b.opening_hours
+      console.log(b.opening_hours.periods)
+      return b.opening_hours.periods
     },
     category: (place) => place.types,
     description: (place) => {
