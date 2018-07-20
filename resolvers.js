@@ -84,21 +84,11 @@ const resolvers = {
   },
 
   Location: {
-    address: (location) => {
-      return helper.mapLocationFields(location, ["street_number", "route", "locality"])
-    },
-    zipcode: (location) => {
-      return helper.mapLocationFields(location, ["postal_code"])
-    },
-    city: (location) => {
-      return helper.mapLocationFields(location, ["administrative_area_level_2"])
-    },
-    state: (location) => {
-      return helper.mapLocationFields(location, ["administrative_area_level_1"])
-    },
-    country: (location) => {
-      return helper.mapLocationFields(location, ["country"])
-    }
+    address: (location) => helper.mapLocationFields(location, ["street_number", "route", "locality"]),
+    zipcode: (location) => helper.mapLocationFields(location, ["postal_code"]),
+    city: (location) => helper.mapLocationFields(location, ["administrative_area_level_2"]),
+    state: (location) => helper.mapLocationFields(location, ["administrative_area_level_1"]),
+    country: (location) => helper.mapLocationFields(location, ["country"])
   },
 
   Query: {
@@ -108,7 +98,7 @@ const resolvers = {
 
 /*
   - implement Mutation to display other types/categories
-  - implment next page token, previous token, lazy loading
+  - implement next page token, previous token, lazy loading
 */
 
 module.exports.resolvers = resolvers;
