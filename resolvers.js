@@ -85,15 +85,15 @@ const resolvers = {
   },
 
   OpenHours: {
-    date: (date) => moment(date.open.day).format('d'),
+    date: (date) => moment(date.open.day).format(),
     time: (date) => {
       let v = []
 
       for (let i=0; i<=6; i++) {
         if (date.open.day === i) {
           v.push({
-            start: moment(date.open.time).format('HH'),
-            end: moment(date.close.time).format('HH')
+            start: moment(date.open.time).format(),
+            end: moment(date.close.time).format()
           })
         }
       }
