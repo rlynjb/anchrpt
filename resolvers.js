@@ -111,12 +111,7 @@ const resolvers = {
       let v = []
 
       for (let i=0; i<=6; i++) {
-      if (date.open.day === i) {
-        v.push({
-          start: date.open.time,
-          end: date.close.time
-        })
-      }
+        if (date.open.day === i) v.push({ start: date.open.time, end: date.close.time })
       }
 
       return v
