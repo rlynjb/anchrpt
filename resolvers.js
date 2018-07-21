@@ -92,8 +92,8 @@ const resolvers = {
       for (let i=0; i<=6; i++) {
         if (date.open.day === i) {
           v.push({
-            start: moment(date.open.time).format(),
-            end: moment(date.close.time).format()
+            start: moment().hour(Number(date.open.time)),
+            end: moment().hour(Number(date.close.time))
           })
         }
       }
