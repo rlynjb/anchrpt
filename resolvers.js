@@ -110,12 +110,13 @@ const resolvers = {
     time: (date) => {
       let v = []
 
-      console.log(date.open)
-      if (date.open.day === 0) {
+      for (let i=0; i<=6; i++) {
+      if (date.open.day === i) {
         v.push({
           start: date.open.time,
           end: date.close.time
         })
+      }
       }
 
       return v
@@ -123,12 +124,8 @@ const resolvers = {
   },
 
   Time: {
-    start: (time) => {
-      return time.start
-    },
-    end: (time) => {
-      return time.end
-    }
+    start: (time) => time.start,
+    end: (time) => time.end
   },
 
   Location: {
