@@ -108,7 +108,7 @@ const resolvers = {
       }
     },
     time: (date) => {
-      console.log(date)
+      console.log(date.open)
       if (date.open.day === 0) {
         return date.open.time
       }
