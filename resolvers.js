@@ -1,4 +1,5 @@
-const fetch = require('node-fetch');
+const fetch = require('node-fetch')
+const moment = require('moment')
 
 /* 
   https://developers.google.com/places/web-service/search
@@ -35,29 +36,6 @@ let helper = {
     })
     
     return cleanAddress.join(" ")
-  },
-  convertDay: (v) => {
-    if (v === 0) {
-      return "Sunday"
-    }
-    if (v === 1) {
-      return "Monday"
-    }
-    if (v === 2) {
-      return "Tuesday"
-    }
-    if (v === 3) {
-      return "Wednesday"
-    }
-    if (v === 4) {
-      return "Thursday"
-    }
-    if (v === 5) {
-      return "Friday"
-    }
-    if (v === 6) {
-      return "Saturday"
-    }
   }
 }
 
@@ -107,7 +85,7 @@ const resolvers = {
   },
 
   OpenHours: {
-    date: (date) => helper.convertDay(date.open.day),
+    date: (date) => moment().day(date.open.day),
     time: (date) => {
       let v = []
 
@@ -142,4 +120,4 @@ const resolvers = {
   - implement next page token, previous token, lazy loading
 */
 
-module.exports.resolvers = resolvers;
+module.exports.resolvers = resolvers
