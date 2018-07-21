@@ -35,6 +35,29 @@ let helper = {
     })
     
     return cleanAddress.join(" ")
+  },
+  convertDay: (v) => {
+    if (v === 0) {
+      return "Sunday"
+    }
+    if (v === 1) {
+      return "Monday"
+    }
+    if (v === 2) {
+      return "Tuesday"
+    }
+    if (v === 3) {
+      return "Wednesday"
+    }
+    if (v === 4) {
+      return "Thursday"
+    }
+    if (v === 5) {
+      return "Friday"
+    }
+    if (v === 6) {
+      return "Saturday"
+    }
   }
 }
 
@@ -84,29 +107,7 @@ const resolvers = {
   },
 
   OpenHours: {
-    date: (date) => {
-      if (date.open.day === 0) {
-        return "Sunday"
-      }
-      if (date.open.day === 1) {
-        return "Monday"
-      }
-      if (date.open.day === 2) {
-        return "Tuesday"
-      }
-      if (date.open.day === 3) {
-        return "Wednesday"
-      }
-      if (date.open.day === 4) {
-        return "Thursday"
-      }
-      if (date.open.day === 5) {
-        return "Friday"
-      }
-      if (date.open.day === 6) {
-        return "Saturday"
-      }
-    },
+    date: (date) => helper.convertDay(date.open.day),
     time: (date) => {
       let v = []
 
