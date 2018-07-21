@@ -108,19 +108,26 @@ const resolvers = {
       }
     },
     time: (date) => {
+      let v = []
+
       console.log(date.open)
       if (date.open.day === 0) {
-        return date.open.time
+        v.push({
+          start: date.open.time,
+          end: date.close.time
+        })
       }
+
+      return v
     }
   },
 
   Time: {
     start: (time) => {
-      //
+      return time.start
     },
     end: (time) => {
-      //
+      return time.end
     }
   },
 
