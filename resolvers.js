@@ -85,7 +85,7 @@ const resolvers = {
   },
 
   OpenHours: {
-    date: (date) => moment().day(date.open.day),
+    date: (date) => moment().weekday(date.open.day),
     time: (date) => {
       let v = []
 
