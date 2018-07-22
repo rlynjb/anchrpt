@@ -91,8 +91,8 @@ const resolvers = {
 
         if (date.open.day === 0) {
           let td = { start: '', end: '' }
-          td.start = moment(date.open.time, 'HH').format('h:mma')
-          td.end = moment(date.close.time, 'HH').format('h:mma')
+          td.start = 'kir'//moment(date.open.time, 'HH').format('h:mma')
+          td.end = 'by'//moment(date.close.time, 'HH').format('h:mma')
           v.push(td)
         }
 
