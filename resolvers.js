@@ -42,10 +42,7 @@ let helper = {
 const resolvers = {
   Place: {
     id: (place) => place.place_id,
-    title: (place) => {
-      console.log(place.name)
-      return place.name
-    },
+    title: (place) => place.name,
     images: async (place) => {
       let v = []
       
@@ -93,7 +90,9 @@ const resolvers = {
       let v = []
       let td = { start: '', end: '' }
       
-      console.log(date)
+      if (date.close.day === 0) {
+        console.log(date)
+      }
 
       /*for (let i=0; i<=6; i++) {
         if (date.close.day === i) {
