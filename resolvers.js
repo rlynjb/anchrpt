@@ -97,7 +97,7 @@ const resolvers = {
         //if (date.close.day === i) {
           //td.end = 'ky'//moment(date.close.time, 'HH').format('h:mma')
         //}
-        if (td.start != '' || td.end != '') {
+        if (td.start != '' && td.end != '') {
           v.push(td)
         }
       }
