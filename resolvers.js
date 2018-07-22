@@ -88,7 +88,7 @@ const resolvers = {
     date: (date) => moment(date.open.day, 'd').format('ddd'),
     time: (date) => {
       let v = []
-      let td = { start: '', end: '' }
+      let td = { start: '', end: 'hello' }
 
       for (let i=0; i<=6; i++) {
         if (date.open.day === i) {
