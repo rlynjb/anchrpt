@@ -91,10 +91,10 @@ const resolvers = {
       let td = { start: '', end: '' }
 
       //for (let i=0; i<=6; i++) {
-        if (date.close.day === 0) {
+        if (date.close.day === 1) {
           td.end = 'kigy'//moment(date.open.time, 'HH').format('h:mma')
         }
-        if (date.open.day === 0) {
+        if (date.open.day === 1) {
           td.start = 'ky'//moment(date.close.time, 'HH').format('h:mma')
         }
         if (td.start != '' && td.end != '') {
