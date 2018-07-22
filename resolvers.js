@@ -89,8 +89,12 @@ const resolvers = {
     time: (date) => {
       let v = []
       let td = { start: '', end: '' }
+      
+      if (date.close.day === 1) {
+        console.log(date.close.time)
+      }
 
-      for (let i=0; i<=6; i++) {
+      /*for (let i=0; i<=6; i++) {
         if (date.close.day === i) {
           td.end = 'kigy'//moment(date.open.time, 'HH').format('h:mma')
         }
@@ -100,7 +104,7 @@ const resolvers = {
         if (td.start != '' && td.end != '') {
           v.push(td)
         }
-      }
+      }*/
 
       return v
     }
