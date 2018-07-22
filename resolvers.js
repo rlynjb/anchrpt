@@ -90,8 +90,8 @@ const resolvers = {
       let v = []
       let td = { start: '', end: '' }
       
-      if (date.open.day === 6) {
-        console.log(date)
+      if (date.open.day === 0) {
+        console.log(date.open.time + ' - ' + open.close.time)
       }
 
       /*for (let i=0; i<=6; i++) {
