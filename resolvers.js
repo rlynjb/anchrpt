@@ -87,21 +87,16 @@ const resolvers = {
   OpenHours: {
     date: (date) => moment(date.open.day, 'd').format('ddd'),
     time: (date) => {
-      return [
-        { start: 'kir' }
-      ]
-      /*let v = []
+      let v = []
 
-      for (let i=0; i<=6; i++) {
-        if (date.open.day === i) {
+        if (date.open.day === 0) {
           let td = { start: '', end: '' }
           td.start = moment(date.open.time, 'HH').format('h:mma')
           td.end = moment(date.close.time, 'HH').format('h:mma')
           v.push(td)
         }
-      }
 
-      return v*/
+      return v
     }
   },
 
