@@ -90,7 +90,7 @@ const resolvers = {
       let v = []
 
       for (let i=0; i<=6; i++) {
-        if (date.open.day === i) {
+        if (date.open.day === i && date.close day === i) {
           v.push({
             start: moment(date.open.time, 'HH').format('h:mma'),
             end: moment(date.close.time, 'HH').format('h:mma')
