@@ -91,11 +91,11 @@ const resolvers = {
       let td = { start: '', end: '' }
       
       if (date.open.day === 0) {
-        td.start = date.open.time
+        td.start = moment(date.open.time, 'HH').format('h:mma')
+
         if (date.close) {
-          td.end = date.close.time
+          td.end = moment(date.close.time, 'HH').format('h:mma')
         }
-        //td.end = date.close.time
         v.push(td)
       }
 
