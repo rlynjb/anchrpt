@@ -92,7 +92,7 @@ const resolvers = {
 
       for (let i=0; i<=6; i++) {
         if (date.open.day === i) {
-          td.start = moment(date.open.time, 'HH').format('h:mma')
+          td.start = 'kigy'//moment(date.open.time, 'HH').format('h:mma')
         }
         if (date.close.day === i) {
           td.end = 'ky'//moment(date.close.time, 'HH').format('h:mma')
