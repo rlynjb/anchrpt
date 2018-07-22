@@ -95,7 +95,7 @@ const resolvers = {
           td.start = moment(date.open.time, 'HH').format('h:mma')
         }
         if (date.close.day === i) {
-          td.end = date.close.time//moment(date.close.time, 'HH').format('h:mma')
+          td.end = 'ky'//moment(date.close.time, 'HH').format('h:mma')
         }
         if (td.start != '' && td.end != '') {
           v.push(td)
