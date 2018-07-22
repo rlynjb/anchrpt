@@ -91,7 +91,7 @@ const resolvers = {
       let td = { start: '', end: '' }
       
       if (date.close.day === 1) {
-        console.log(date.close.time)
+        console.log(date)
       }
 
       /*for (let i=0; i<=6; i++) {
