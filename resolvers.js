@@ -88,15 +88,15 @@ const resolvers = {
     date: (date) => moment(date.open.day, 'd').format('ddd'),
     time: (date) => {
       let v = []
-      let td = { start: '', end: 'hello' }
+      let td = { start: '', end: '' }
 
       for (let i=0; i<=6; i++) {
         if (date.open.day === i) {
           td.start = 'kigy'//moment(date.open.time, 'HH').format('h:mma')
         }
-        //if (date.close.day === i) {
-          //td.end = 'ky'//moment(date.close.time, 'HH').format('h:mma')
-        //}
+        if (date.close.day === i) {
+          td.end = 'ky'//moment(date.close.time, 'HH').format('h:mma')
+        }
         if (td.start != '' && td.end != '') {
           v.push(td)
         }
