@@ -90,7 +90,7 @@ const resolvers = {
       let v = []
       let td = { start: '', end: '' }
       
-      if (date.close.day === 0) {
+      if (date.open.day === 6) {
         console.log(date)
       }
 
