@@ -91,7 +91,7 @@ const resolvers = {
       let td = { start: '', end: '' }
       
       for (let i=0; i<=6; i++) {
-      if (date.open.day === 0) {
+      if (date.open.day === i) {
         td.start = moment(date.open.time, 'HH').format('h:mma')
 
         if (date.close) {
