@@ -91,7 +91,7 @@ const resolvers = {
       let td = { start: '', end: '' }
       
       if (date.open.day === 0) {
-        //console.log(date.open.time + ' - ' + open.close.time)
+        console.log(date.open.time + ' - ' + date.close.time)
         td.start = date.open.time
         //td.end = date.close.time
         v.push(td)
