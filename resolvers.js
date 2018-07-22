@@ -90,12 +90,14 @@ const resolvers = {
       let v = []
       let td = { start: '', end: '' }
       
-      if (date.close.day === 2) {
+      date.filter(v => {
+      if (v.close.day === 2) {
         console.log(date)
       }
-      if (date.open.day === 2) {
+      if (v.open.day === 2) {
         console.log(date)
       }
+      })
 
       /*for (let i=0; i<=6; i++) {
         if (date.close.day === i) {
