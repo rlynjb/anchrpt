@@ -93,6 +93,9 @@ const resolvers = {
       if (date.close.day === 2) {
         console.log(date)
       }
+      if (date.open.day === 2) {
+        console.log(date)
+      }
 
       /*for (let i=0; i<=6; i++) {
         if (date.close.day === i) {
