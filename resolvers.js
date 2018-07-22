@@ -91,22 +91,11 @@ const resolvers = {
 
       for (let i=0; i<=6; i++) {
         let td = { start: '', end: '' }
-        let temp = []
 
         if (date.open.day === i) {
-          temp.push(moment(date.open.time, 'HH').format('h:mma'))
-          //td.start = moment(date.open.time, 'HH').format('h:mma')
-          //td.end = moment(date.close.time, 'HH').format('h:mma')
-          //v.push(td)
-        }
-        if (date.close.day === i) {
-          temp.push(moment(date.close.time, 'HH').format('h:mma'))
-        }
-        if (temp) {
-          td.start = temp[0]
-          td.end = temp[1]
+          td.start = moment(date.open.time, 'HH').format('h:mma')
+          td.end = moment(date.close.time, 'HH').format('h:mma')
           v.push(td)
-          temp = []
         }
       }
 
