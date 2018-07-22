@@ -100,9 +100,6 @@ const resolvers = {
         //if (date.close.day === i) {
           //td.end = moment(date.close.time, 'HH').format('h:mma')
         //}
-
-        td.start = ''
-        td.end = ''
       }
 
       return v
