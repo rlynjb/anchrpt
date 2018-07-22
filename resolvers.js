@@ -90,17 +90,17 @@ const resolvers = {
       let v = []
       let td = { start: '', end: '' }
 
-      //for (let i=0; i<=6; i++) {
-        if (date.close.day === 1) {
+      for (let i=0; i<=6; i++) {
+        if (date.close.day === i) {
           td.end = 'kigy'//moment(date.open.time, 'HH').format('h:mma')
         }
-        if (date.open.day === 1) {
+        if (date.open.day === i) {
           td.start = 'ky'//moment(date.close.time, 'HH').format('h:mma')
         }
         if (td.start != '' && td.end != '') {
           v.push(td)
         }
-      //}
+      }
 
       return v
     }
