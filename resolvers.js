@@ -89,6 +89,8 @@ const resolvers = {
     time: (date) => {
       let v = []
       let td = { start: '', end: '' }
+      
+      console.log(date)
 
       //for (let i=0; i<=6; i++) {
         if (date.open.day === 0) {
