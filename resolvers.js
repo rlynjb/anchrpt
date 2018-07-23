@@ -117,6 +117,7 @@ const resolvers = {
 
   Query: {
     places: async (root, { type }, context) => {
+      console.log('kirby', {type})
       await api.get(nearbySearchApi + { type })
     }
   },
