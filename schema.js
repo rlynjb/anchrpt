@@ -36,7 +36,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    places(type: String!): [Place]
+    places(type: String): [Place]
   }
 `;
 

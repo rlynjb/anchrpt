@@ -117,7 +117,7 @@ const resolvers = {
 
   Query: {
     places: async (root, { type }, context) => {
-      await api.get(nearbySearchApi + type)
+      await api.get(nearbySearchApi + { type })
     }
   },
 }
