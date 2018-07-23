@@ -6,7 +6,7 @@ const moment = require('moment')
 */
 let key = 'AIzaSyBd0gI0OszcB1VkKFSD0jLbqKleC98N5tY'
 
-let nearbySearchApi = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=36.057726,-115.237187&radius=80000&maxprice=2&key='+key+'&type='
+let nearbySearchApi = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=36.057726,-115.237187&radius=80000&maxprice=2&key='+key+'&keyword='
 
 let photoApi = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&key='+key+'&photoreference='
 
