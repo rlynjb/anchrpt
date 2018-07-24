@@ -17,7 +17,7 @@ let api = {
     const json = await res.json()
     if (json.status != 'OK') return false
 
-    console.log(json)
+    console.log(json.next_page_token, 'hello')
     this.nextPageToken = json.next_page_token ? json.next_page_token : null
     if (json.results) return json.results
     if (json.result) return json.result
