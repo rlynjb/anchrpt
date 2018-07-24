@@ -119,7 +119,10 @@ const resolvers = {
       let v = await api.get(nearbySearchApi + type + nToken)
       return v
     },
-    places_next_page: () => api.nextPageToken ? api.nextPageToken : false
+    places_next_page: () => {
+      console.log('kirby', api)
+      return api.nextPageToken ? api.nextPageToken : false
+    }
   },
 }
 
