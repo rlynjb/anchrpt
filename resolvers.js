@@ -13,11 +13,13 @@ let photoApi = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&ke
 let placeDetail = 'https://maps.googleapis.com/maps/api/place/details/json?key='+key+'&placeid='
 
 let api = {
+  nextPageToken: null,
   get: async (v) => {
     const res = await fetch(v)
     const json = await res.json()
     if (json.status != 'OK') return false
-    
+
+    this.nextPageToken = json.next_page_token ? json.next_page_token : null
     if (json.results) return json.results
     if (json.result) return json.result
   }
@@ -116,12 +118,15 @@ const resolvers = {
   },
 
   Query: {
-    places: async (root, { type }, context) => await api.get(nearbySearchApi + type)
+    places: async (root, { type, nextPage }, context) => {
+      let nToken = nextPage ? '&next_page_token=' + api.nextPageToken : ''
+      let v = await api.get(nearbySearchApi + type + nToken)
+      return v
+    }
   },
 }
 
 /*
-  - implement Mutation to display other types/categories
   - implement next page token, previous token, lazy loading
 */
 
