@@ -18,7 +18,7 @@ let api = {
     if (json.status != 'OK') return false
 
     console.log('tt', json.next_page_token)
-    this.nextPageToken = json.next_page_token
+    this.nextPageToken = json.next_page_token ? json.next_page_token : null
     console.log('hello', this.nextPageToken)
 
     if (json.results) return json.results
