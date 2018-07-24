@@ -1,9 +1,7 @@
 const fetch = require('node-fetch')
 const moment = require('moment')
 
-/* 
-  https://developers.google.com/places/web-service/search
-*/
+// https://developers.google.com/places/web-service/search
 let key = 'AIzaSyBd0gI0OszcB1VkKFSD0jLbqKleC98N5tY'
 
 let nearbySearchApi = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=36.057726,-115.237187&radius=80000&maxprice=2&key='+key+'&keyword='
@@ -47,7 +45,6 @@ const resolvers = {
     title: (place) => place.name,
     images: async (place) => {
       let v = []
-      
       //let moreImgs = await api.get(placeDetail + place.place_id + '&fields=photos')
 
       for (let i = 0; i < place.photos.length; i++) {
@@ -65,8 +62,7 @@ const resolvers = {
     },
     category: (place) => place.types,
     description: (place) => {
-      // desc or reviews
-      // need to rethink about this
+      // desc or reviews, need to rethink about this
     },
     location: async (place) => {
       let b = await api.get(placeDetail + place.place_id + '&fields=address_components')
@@ -119,6 +115,7 @@ const resolvers = {
 
   Query: {
     places: async (root, { type, nextPage }, context) => {
+      console.log(nextPage, 'kirby')
       let nToken = nextPage ? '&next_page_token=' + api.nextPageToken : ''
       let v = await api.get(nearbySearchApi + type + nToken)
       return v
