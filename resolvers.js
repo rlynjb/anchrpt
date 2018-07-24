@@ -12,12 +12,12 @@ let placeDetail = 'https://maps.googleapis.com/maps/api/place/details/json?key='
 
 let api = {
   nextPageToken: null,
-  get: async function (v) {
+  get: async (v) => {
     const res = await fetch(v)
     const json = await res.json()
     if (json.status != 'OK') return false
 
-    console.log('hello', this.nextPageToken)
+    console.log('hello', this)
     this.nextPageToken = json.next_page_token ? json.next_page_token : null
     if (json.results) return json.results
     if (json.result) return json.result
