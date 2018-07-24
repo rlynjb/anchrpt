@@ -17,9 +17,7 @@ let api = {
     const json = await res.json()
     if (json.status != 'OK') return false
 
-    console.log('tt', json.next_page_token)
     this.nextPageToken = json.next_page_token ? json.next_page_token : null
-    console.log('hello', this.nextPageToken)
 
     if (json.results) return json.results
     if (json.result) return json.result
@@ -123,7 +121,6 @@ const resolvers = {
       return v
     },
     places_next_page: () => {
-      console.log('kirby', api.nextPageToken)
       return api.nextPageToken ? api.nextPageToken : false
     }
   },
