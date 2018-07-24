@@ -115,11 +115,11 @@ const resolvers = {
 
   Query: {
     places: async (root, { type, nextPage }, context) => {
-      console.log(nextPage, 'kirby')
       let nToken = nextPage ? '&next_page_token=' + api.nextPageToken : ''
       let v = await api.get(nearbySearchApi + type + nToken)
       return v
-    }
+    },
+    places_next_page: () => api.nextPageToken ? api.nextPageToken : false
   },
 }
 
