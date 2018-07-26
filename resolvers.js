@@ -97,7 +97,7 @@ const resolvers = {
     city: (location) => helper.mapLocationFields(location, ["administrative_area_level_2"]),
     state: (location) => helper.mapLocationFields(location, ["administrative_area_level_1"]),
     country: (location) => helper.mapLocationFields(location, ["country"])
-  },
+  },*/
 
   PlacesRoot: {
     result: (obj) => {
@@ -107,7 +107,7 @@ const resolvers = {
       ]
     },
     places_next_page: (obj) => obj.places_next_page
-  },*/
+  },
 
   Query: {
     places: async (root, {type}, ctx, info) => {
