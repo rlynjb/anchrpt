@@ -28,10 +28,16 @@ let helper = {
 
 const resolvers = {
   PlacesRoot: {
-    result: (obj) => {
+    results: (obj) => {
       console.log('hello', obj)
     },
     places_next_page: (obj) => obj.places_next_page
+  },
+  
+  TestPlace: {
+    title: () => {
+      console.log('ghgh')
+    }
   },
 
   Place: {
