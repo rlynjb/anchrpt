@@ -2,7 +2,7 @@ const { gql } = require('apollo-server');
 
 const typeDefs = gql`
   type PlacesRoot {
-    results: [TestPlace],
+    results: TestPlace,
     places_next_page: Boolean
   }
   
