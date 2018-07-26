@@ -34,10 +34,14 @@ const typeDefs = gql`
     state: String,
     country: String
   }
+  
+  type PlacesRoot {
+    result(type: String, nextPage: Boolean): [Place],
+    places_next_page: Boolean
+  }
 
   type Query {
-    places(type: String, nextPage: Boolean): [Place],
-    places_next_page: Boolean
+    places: Root
   }
 `;
 

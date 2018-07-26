@@ -99,15 +99,19 @@ const resolvers = {
     country: (location) => helper.mapLocationFields(location, ["country"])
   },
 
+  PlacesRoot: {
+    result: (obj) => obj.result,
+    places_next_page: (obj) => obj.places_next_page
+  }
+
   Query: {
-    places: async (root, { type, nextPage }, ctx, info) => {
-      //let nToken = nextPage ? '&next_page_token=' + api.nextPageToken : ''
+    places: (root, {type, nextPage}, ctx, info) => {
       let v = await ctx.get(nearbySearchApi + type)
-      return v
-    },
-    places_next_page: (root, args, ctx, info) => {
-      console.log('kirby', root)
-      return ctx.nextPageToken ? ctx.nextPageToken : false
+      
+      return {
+        result: v.results,
+        places_next_page: v.next_page_token
+      }
     }
   },
 }
