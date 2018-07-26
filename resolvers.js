@@ -105,7 +105,7 @@ const resolvers = {
   },
 
   Query: {
-    places: (root, {type, nextPage}, ctx, info) => {
+    places: async (root, {type, nextPage}, ctx, info) => {
       let v = await ctx.get(nearbySearchApi + type)
       
       return {
