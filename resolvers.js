@@ -29,8 +29,8 @@ let helper = {
 const resolvers = {
   Place: {
     id: (place) => place.place_id,
-    title: (place) => place.name,
-    images: async (place) => {
+    title: (place) => place.name
+    /*images: async (place) => {
       let v = []
       //let moreImgs = await api.get(placeDetail + place.place_id + '&fields=photos')
 
@@ -66,7 +66,7 @@ const resolvers = {
     phone: async (place, args, context) => {
       let b = await context.get(placeDetail + place.place_id + '&fields=formatted_phone_number')
       return b.formatted_phone_number
-    }
+    }*/
   },
 
   OpenHours: {
