@@ -102,7 +102,7 @@ const resolvers = {
   PlacesRoot: {
     result: (obj) => obj.result,
     places_next_page: (obj) => obj.places_next_page
-  }
+  },
 
   Query: {
     places: (root, {type, nextPage}, ctx, info) => {
