@@ -36,7 +36,7 @@ const typeDefs = gql`
   }
   
   type PlacesRoot {
-    result: String,
+    result: Place,
     places_next_page: Boolean
   }
 
