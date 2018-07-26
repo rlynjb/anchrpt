@@ -36,12 +36,12 @@ const typeDefs = gql`
   }
   
   type PlacesRoot {
-    result(type: String, nextPage: Boolean): [Place],
+    result: [Place],
     places_next_page: Boolean
   }
 
   type Query {
-    places: Root
+    places(type: String): Root
   }
 `;
 
