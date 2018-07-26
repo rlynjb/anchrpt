@@ -2,12 +2,8 @@ const { gql } = require('apollo-server');
 
 const typeDefs = gql`
   type PlacesRoot {
-    results: TestPlace,
+    results: String,
     places_next_page: Boolean
-  }
-  
-  type TestPlace {
-    title: String
   }
 
   type Place {

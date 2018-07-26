@@ -33,12 +33,6 @@ const resolvers = {
     },
     places_next_page: (obj) => obj.places_next_page
   },
-  
-  TestPlace: {
-    title: () => {
-      console.log('ghgh')
-    }
-  },
 
   Place: {
     //id: (place) => place.place_id,
