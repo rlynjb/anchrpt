@@ -3,18 +3,18 @@ const { gql } = require('apollo-server');
 const typeDefs = gql`
   type Place {
     id: String,
-    title: String,
-    images: [String],
-    price: Int,
-    rating: Float,
-    open_now: Boolean,
-    open_hours: [OpenHours],
-    category: [String],
-    description: String,
-    location: Location,
-    map_url: String,
-    website: String,
-    phone: String
+    title: String
+    # images: [String],
+    # price: Int,
+    # rating: Float,
+    # open_now: Boolean,
+    # open_hours: [OpenHours],
+    # category: [String],
+    # description: String,
+    # location: Location,
+    # map_url: String,
+    # website: String,
+    # phone: String
   }
   
   type OpenHours {
@@ -36,7 +36,7 @@ const typeDefs = gql`
   }
   
   type PlacesRoot {
-    result: Place,
+    result: [Place],
     places_next_page: Boolean
   }
 
