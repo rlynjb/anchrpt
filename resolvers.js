@@ -27,18 +27,9 @@ let helper = {
 }
 
 const resolvers = {
-  PlacesRoot: {
-    results: (obj) => {
-      console.log('hello', obj)
-    },
-    places_next_page: (obj) => obj.places_next_page
-  },
-
   Place: {
     //id: (place) => place.place_id,
-    title: (obj) => {
-      console.log('kirbu', obj)
-    }
+    title: (obj) => obj.name
   },
     /*images: async (place) => {
       let v = []
@@ -112,10 +103,11 @@ const resolvers = {
   Query: {
     places: async (root, {type}, ctx, info) => {
       let n = await ctx.get(nearbySearchApi + type)
-      return {
-        results: n.results,
-        places_next_page: n.next_page_token
-      }
+      return n.results
+    },
+    places_next_page: (obj, args, ctx, info) => {
+      let n = await ctx.get(nearbySearchApi + type)
+      return n.next_page_token ? true : false
     }
   }
 }
