@@ -27,16 +27,6 @@ let helper = {
 }
 
 const resolvers = {
-  Query: {
-    places: async (root, {type}, ctx, info) => {
-      let v = await ctx.get(nearbySearchApi + type)
-      return {
-        result: v.results,
-        places_next_page: v.next_page_token
-      }
-    }
-  },
-
   PlacesRoot: {
     result: (obj) => {
       console.log('kirby', obj)
@@ -50,7 +40,7 @@ const resolvers = {
   Place: {
     id: (place) => place.place_id,
     title: (place) => place.name
-  }
+  },
     /*images: async (place) => {
       let v = []
       //let moreImgs = await api.get(placeDetail + place.place_id + '&fields=photos')
@@ -119,6 +109,16 @@ const resolvers = {
     state: (location) => helper.mapLocationFields(location, ["administrative_area_level_1"]),
     country: (location) => helper.mapLocationFields(location, ["country"])
   },*/
+
+  Query: {
+    places: async (root, {type}, ctx, info) => {
+      let v = await ctx.get(nearbySearchApi + type)
+      return {
+        result: v.results,
+        places_next_page: v.next_page_token
+      }
+    }
+  }
 }
 
 /*
