@@ -100,13 +100,14 @@ const resolvers = {
   },
 
   Query: {
-    places: async (root, { type, nextPage }, context, info) => {
+    places: async (root, { type, nextPage }, ctx, info) => {
       //let nToken = nextPage ? '&next_page_token=' + api.nextPageToken : ''
-      let v = await context.get(nearbySearchApi + type)
+      let v = await ctx.get(nearbySearchApi + type)
       return v
     },
-    places_next_page: (root, args, context, info) => {
-      return context.nextPageToken ? context.nextPageToken : false
+    places_next_page: (root, args, ctx, info) => {
+      console.log('kirby', root)
+      return ctx.nextPageToken ? ctx.nextPageToken : false
     }
   },
 }

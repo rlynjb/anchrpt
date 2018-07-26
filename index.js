@@ -13,7 +13,6 @@ let connectors = {
 
     this.nextPageToken = json.next_page_token ? json.next_page_token : null
 
-    console.log('kirby', this.nextPageToken)
     if (json.results) return json.results
     if (json.result) return json.result
   }
