@@ -29,7 +29,10 @@ let helper = {
 const resolvers = {
   Place: {
     id: (place) => place.place_id,
-    title: (place) => place.name
+    title: (place) => {
+      console.log(place)
+      //place.name
+    }
     /*images: async (place) => {
       let v = []
       //let moreImgs = await api.get(placeDetail + place.place_id + '&fields=photos')
@@ -103,7 +106,7 @@ const resolvers = {
     result: (obj) => {
       console.log('kirby', obj)
       return [
-        { id: 'qwert', title: 'testing' }
+        { place_id: 'qwert', name: 'testing' }
       ]
     },
     places_next_page: (obj) => obj.places_next_page
