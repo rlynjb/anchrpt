@@ -121,7 +121,7 @@ const resolvers = {
       return v
     },
     places_next_page: (root, args, context, info) => {
-      console.log('kirby', context.nextPageToken)
+      console.log('kirby', context)
       return context.nextPageToken ? context.nextPageToken : false
     }
   },
