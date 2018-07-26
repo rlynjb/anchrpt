@@ -102,7 +102,9 @@ const resolvers = {
   PlacesRoot: {
     result: (obj) => {
       console.log('kirby', obj)
-      return obj.result
+      return [
+        { id: 'qwert', title: 'testing' }
+      ]
     },
     places_next_page: (obj) => obj.places_next_page
   },
