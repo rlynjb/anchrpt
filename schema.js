@@ -5,6 +5,10 @@ const typeDefs = gql`
     results: [TestPlace],
     places_next_page: Boolean
   }
+  
+  type TestPlace {
+    title: String
+  }
 
   type Place {
     #id: String,
