@@ -100,14 +100,16 @@ const resolvers = {
   },
 
   PlacesRoot: {
-    result: (obj) => obj.result,
+    result: (obj) => {
+      console.log('kirby', obj)
+      //obj.result
+    },
     places_next_page: (obj) => obj.places_next_page
   },
 
   Query: {
     places: async (root, {type}, ctx, info) => {
       let v = await ctx.get(nearbySearchApi + type)
-      console.log('kirby', v.results)
       return {
         result: v.results,
         places_next_page: v.next_page_token
