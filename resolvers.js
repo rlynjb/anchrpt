@@ -69,7 +69,7 @@ const resolvers = {
     }*/
   },
 
-  OpenHours: {
+  /*OpenHours: {
     date: (date) => moment(date.open.day, 'd').format('ddd'),
     time: (date) => {
       let v = []
@@ -107,7 +107,7 @@ const resolvers = {
       ]
     },
     places_next_page: (obj) => obj.places_next_page
-  },
+  },*/
 
   Query: {
     places: async (root, {type}, ctx, info) => {
