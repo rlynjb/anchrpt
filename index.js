@@ -9,11 +9,11 @@ let connectors = {
   get: async function(v) {
     const res = await fetch(v)
     const json = await res.json()
-    console.log('hello', json)
     if (json.status != 'OK') return false
 
     this.nextPageToken = json.next_page_token ? json.next_page_token : null
 
+    console.log('kirby', this.nextPageToken)
     if (json.results) return json.results
     if (json.result) return json.result
   }
