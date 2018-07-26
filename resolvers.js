@@ -117,11 +117,12 @@ const resolvers = {
 
   Query: {
     places: async (root, {type}, ctx, info) => {
-      let v = await ctx.get(nearbySearchApi + type)
-
+      let v = await fetch(nearbySearchApi + type)
+      let n = await v.json()
+      
       return {
-        results: v.results,
-        places_next_page: v.next_page_token
+        results: n.results,
+        places_next_page: n.next_page_token
       }
     }
   }
