@@ -7,7 +7,7 @@ const typeDefs = gql`
   }
 
   type Place {
-    id: String,
+    #id: String,
     title: String
     # images: [String],
     # price: Int,
@@ -22,23 +22,23 @@ const typeDefs = gql`
     # phone: String
   }
   
-  type OpenHours {
-    date: String,
-    time: [Time]
-  }
+  # type OpenHours {
+    # date: String,
+    # time: [Time]
+  # }
   
-  type Time {
-    start: String,
-    end: String
-  }
+  # type Time {
+    # start: String,
+    # end: String
+  # }
   
-  type Location {
-    address: String,
-    zipcode: String,
-    city: String,
-    state: String,
-    country: String
-  }
+  # type Location {
+    # address: String,
+    # zipcode: String,
+    # city: String,
+    # state: String,
+    # country: String
+  # }
 
   type Query {
     places(type: String): PlacesRoot
