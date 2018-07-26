@@ -102,6 +102,7 @@ const resolvers = {
   PlacesRoot: {
     result: (obj) => {
       console.log('kirby', obj)
+      return obj.result
     },
     places_next_page: (obj) => obj.places_next_page
   },
@@ -114,7 +115,7 @@ const resolvers = {
         places_next_page: v.next_page_token
       }
     }
-  },
+  }
 }
 
 /*
