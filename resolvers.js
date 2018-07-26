@@ -115,20 +115,25 @@ const resolvers = {
   },
 
   Query: {
-    places: async (root, { type, nextPage }, context) => {
-      let nToken = nextPage ? '&next_page_token=' + api.nextPageToken : ''
-      let v = await api.get(nearbySearchApi + type + nToken)
+    places: async (root, { type, nextPage }, context, info) => {
+      //let nToken = nextPage ? '&next_page_token=' + api.nextPageToken : ''
+      let v = await context.get(nearbySearchApi + type)
       return v
     },
-    places_next_page: () => {
-      console.log('jk', api.nextPageToken)
-      return api.nextPageToken ? api.nextPageToken : false
+    places_next_page: (root, args, context, info) => {
+      return context.nextPageToken ? context.nextPageToken : false
     }
   },
 }
 
 /*
   - implement next page token, previous token, lazy loading
+  - implement context argument for the above issue
+  - whats next
+  - can graphql handle multiple alot of endpoints? or db connections?
+  - performance
+  - caching issues
+  - network
 */
 
 module.exports.resolvers = resolvers
