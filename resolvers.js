@@ -2,27 +2,14 @@ const fetch = require('node-fetch')
 const moment = require('moment')
 
 // https://developers.google.com/places/web-service/search
-let key = 'AIzaSyBd0gI0OszcB1VkKFSD0jLbqKleC98N5tY'
+//let key = 'AIzaSyBd0gI0OszcB1VkKFSD0jLbqKleC98N5tY'
+let key = 'AIzaSyDKqX6gi3Fu2dz77HXjS2ZHVdPGMXl-OJE'
 
 let nearbySearchApi = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=36.057726,-115.237187&radius=80000&maxprice=2&key='+key+'&keyword='
 
 let photoApi = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&key='+key+'&photoreference='
 
 let placeDetail = 'https://maps.googleapis.com/maps/api/place/details/json?key='+key+'&placeid='
-
-let api = {
-  nextPageToken: null,
-  get: async function(v) {
-    const res = await fetch(v)
-    const json = await res.json()
-    if (json.status != 'OK') return false
-
-    this.nextPageToken = json.next_page_token ? json.next_page_token : null
-
-    if (json.results) return json.results
-    if (json.result) return json.result
-  }
-}
 
 let helper = {
   mapLocationFields: (arrItems, arrFields) => {
@@ -35,7 +22,6 @@ let helper = {
         })
       })
     })
-    
     return cleanAddress.join(" ")
   }
 }
@@ -57,28 +43,28 @@ const resolvers = {
     price: (place) => place.price_level,
     rating: (place) => place.rating,
     open_now: (place) => place.opening_hours.open_now,
-    open_hours: async (place) => {
-      let b = await api.get(placeDetail + place.place_id + '&fields=opening_hours')
+    open_hours: async (place, args, context) => {
+      let b = await context.get(placeDetail + place.place_id + '&fields=opening_hours')
       return b.opening_hours.periods
     },
     category: (place) => place.types,
     description: (place) => {
       // desc or reviews, need to rethink about this
     },
-    location: async (place) => {
-      let b = await api.get(placeDetail + place.place_id + '&fields=address_components')
+    location: async (place, args, context) => {
+      let b = await context.get(placeDetail + place.place_id + '&fields=address_components')
       return b.address_components
     },
-    map_url: async (place) => {
-      let b = await api.get(placeDetail + place.place_id + '&fields=url')
+    map_url: async (place, args, context) => {
+      let b = await context.get(placeDetail + place.place_id + '&fields=url')
       return b.url
     },
-    website: async (place) => {
-      let b = await api.get(placeDetail + place.place_id + '&fields=website')
+    website: async (place, args, context) => {
+      let b = await context.get(placeDetail + place.place_id + '&fields=website')
       return b.website
     },
-    phone: async (place) => {
-      let b = await api.get(placeDetail + place.place_id + '&fields=formatted_phone_number')
+    phone: async (place, args, context) => {
+      let b = await context.get(placeDetail + place.place_id + '&fields=formatted_phone_number')
       return b.formatted_phone_number
     }
   },
@@ -96,7 +82,6 @@ const resolvers = {
           v.push(td)
         }
       }
-
       return v
     }
   },
@@ -121,7 +106,6 @@ const resolvers = {
       return v
     },
     places_next_page: (root, args, context, info) => {
-      console.log('kirby', context)
       return context.nextPageToken ? context.nextPageToken : false
     }
   },
