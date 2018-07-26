@@ -41,7 +41,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    places(type: String): Root
+    places(type: String): PlacesRoot
   }
 `;
 
