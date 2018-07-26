@@ -5,7 +5,6 @@ const { resolvers } = require('./resolvers.js');
 const fetch = require('node-fetch')
 
 let connectors = {
-  nextPageToken: null,
   get: async function(v) {
     const res = await fetch(v)
     const json = await res.json()

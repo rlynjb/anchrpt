@@ -104,10 +104,10 @@ const resolvers = {
       let n = await ctx.get(nearbySearchApi + type)
       return n.results
     },
-    places_next_page: async (obj, args, ctx, info) => {
+    /*places_next_page: async (obj, args, ctx, info) => {
       let n = await ctx.get(nearbySearchApi + type)
       return n.next_page_token ? true : false
-    }
+    }*/
   }
 }
 
