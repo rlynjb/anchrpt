@@ -109,7 +109,6 @@ const resolvers = {
 
 /*
   - implement next page token, previous token, lazy loading
-  - implement context argument for the above issue
   - whats next
   - can graphql handle multiple alot of endpoints? or db connections?
   - performance
